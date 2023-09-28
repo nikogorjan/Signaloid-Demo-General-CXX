@@ -16,7 +16,7 @@ bool is_prime(int num) {
 
 int main() {
     int lower_limit = 2;  // Define your lower limit
-    int upper_limit = 100000;  // Define your upper limit
+    int upper_limit = 1000000;  // Define your upper limit
 
     std::vector<int> prime_numbers;
 
