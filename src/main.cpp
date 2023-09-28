@@ -1,35 +1,38 @@
 #include <iostream>
-#include <numeric>
 #include <vector>
-#include <uxhw.h>
 
-int
-main(int argc, char *  argv[])
-{
-	std::vector<double> vec {
-		UxHwDoubleUniformDist(0.0, 1.0),
-		UxHwDoubleUniformDist(1.0, 2.0),
-		UxHwDoubleUniformDist(2.0, 3.0),
-	};
+bool is_prime(int num) {
+    if (num <= 1) return false;
+    if (num <= 3) return true;
 
-	std::cout << "Initial distributions edited:" << std::endl;
-	for (const auto& dist : vec)
-	{
-		std::cout << dist << std::endl;
-	}
+    if (num % 2 == 0 || num % 3 == 0) return false;
 
-	std::adjacent_difference(vec.begin(), vec.end(), vec.begin());
+    for (int i = 5; i * i <= num; i += 6) {
+        if (num % i == 0 || num % (i + 2) == 0) return false;
+    }
 
-	std::cout << "Differences:" << std::endl;
-	for (const auto& diff : vec)
-	{
-		std::cout << diff << std::endl;
-	}
-
-#ifdef DEBUG
-	std::cout << "debug message" << std::endl;
-#endif
-
-	return 0;
+    return true;
 }
 
+int main() {
+    int lower_limit = 2;  // Define your lower limit
+    int upper_limit = 100000;  // Define your upper limit
+
+    std::vector<int> prime_numbers;
+
+    for (int num = lower_limit; num <= upper_limit; ++num) {
+        if (is_prime(num)) {
+            prime_numbers.push_back(num);
+        }
+    }
+
+    std::cout << "Prime numbers between " << lower_limit << " and " << upper_limit << ":\n";
+
+    for (int prime : prime_numbers) {
+        std::cout << prime << " ";
+    }
+
+    std::cout << std::endl;
+
+    return 0;
+}
