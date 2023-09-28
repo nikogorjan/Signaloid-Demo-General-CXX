@@ -9,9 +9,10 @@ main(int argc, char *  argv[])
 	std::vector<double> vec {
 		UxHwDoubleUniformDist(0.0, 1.0),
 		UxHwDoubleUniformDist(1.0, 2.0),
+		UxHwDoubleUniformDist(2.0, 3.0),
 	};
 
-	std::cout << "Initial distributions:" << std::endl;
+	std::cout << "Initial distributions edited:" << std::endl;
 	for (const auto& dist : vec)
 	{
 		std::cout << dist << std::endl;
